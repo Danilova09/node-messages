@@ -1,14 +1,21 @@
 const express = require('express');
+const dataBase = require('../dataBase');
 const router = express.Router();
 
-router.get('/', (req, res) => {
-    res.send('List of messages will be here');
 
+router.get('/', (req, res) => {
+    const messages = dataBase.getMessages();
+    res.send(messages);
 });
 
 router.post('/', (req, res) => {
-    console.log(req.body);
-    res.send('Message will be created here');
+    const datetime = 'date';
+    const message = {
+        message: req.body.message,
+        datetime: datetime,
+    }
+    dataBase.addItem(message);
+    return res.send('created message');
 });
 
 module.exports = router;
