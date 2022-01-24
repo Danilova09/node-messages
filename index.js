@@ -2,8 +2,7 @@ const express = require('express');
 const dataBase = require('./dataBase');
 const messages = require('./app/messages');
 const app = express();
-
-const port = 5000;
+const port = 8000;
 
 dataBase.init();
 app.use(express.json());
